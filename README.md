@@ -37,6 +37,6 @@ Your application must make use of the following libraries:
 
 ## Steps to Run the project
 
-1- To setup dependencies: `npm install`
-2- To run the server: `npm start`
-3- To run the tests: `npm test`
+1. To setup dependencies: `npm install`
+2. To run the server: `npm start`
+3. To run the tests: `npm test`
