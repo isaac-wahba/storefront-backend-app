@@ -1,0 +1,65 @@
+
+
+
+/* Replace with your SQL commands */
+CREATE TABLE product/* Replace with your SQL commands */
+CREATE TABLE product ( id SERIAL PRIMARY KEY ,  name VARCHAR (100), price integer , category VARCHAR (100));
+CREATE TABLE users ( id SERIAL PRIMARY KEY ,  first_name VARCHAR (100),last_name VARCHAR (100), password VARCHAR (100));
+CREATE TYPE state AS ENUM('active','complete');
+CREATE TABLE orders ( id SERIAL PRIMARY KEY ,  quantity integer , status VARCHAR (100), user_id users(id), product_id product(id) );
+
+--
+--
+--
+
+insert into product(name, price, category) values('ball', 100, 'sports');
+insert into product(name, price, category) values('tshort', 5, 'sports');
+insert into product(name, price, category) values('white short', 5, 'sports');
+
+
+insert into users (first_name,last_name,password) values('Ahmed', 'Mohamed', '1234');
+insert into users (first_name,last_name,password) values('Abd Allah', 'Ghali', '1111');
+
+insert into orders (quantity,status,user_id ,product_id) values(5, 'active', 1, 1);
+insert into orders (quantity,status,user_id ,product_id) values(10, 'active', 1, 2);
+insert into orders (quantity,status,user_id ,product_id) values(2, 'active', 1, 2);
+
+
+
+
+SELECT * from users;
+SELECT * from users where id =1;
+SELECT * from product;
+SELECT * from product where id = 1/* Replace with your SQL commands */
+CREATE TABLE product/* Replace with your SQL commands */
+CREATE TABLE product ( id SERIAL PRIMARY KEY ,  name VARCHAR (100), price integer , category VARCHAR (100));
+CREATE TABLE users ( id SERIAL PRIMARY KEY ,  first_name VARCHAR (100),last_name VARCHAR (100), password VARCHAR (100));
+CREATE TYPE state AS ENUM('active','complete');
+CREATE TABLE orders ( id SERIAL PRIMARY KEY ,  quantity integer , status VARCHAR (100), user_id users(id), product_id product(id) );
+
+--
+--
+--
+
+insert into product (name, price, category) values ("ball", 100, "sports");
+insert into product (name, price, category) values ("tshort", 5, "sports");
+insert into product (name, price, category) values ("white short", 5, "sports");
+
+
+insert into users (first_name,last_name,password ) values ("Ahmed", "Mohamed", "1234");
+insert into users (first_name,last_name,password ) values ("Abd Allah", "Ghali", "1111");
+
+insert into orders (quantity,status,user_id ,product_id) values (5, "active", 1, 1);
+insert into orders (quantity,status,user_id ,product_id) values (10, "active", 2, 2);
+insert into orders (quantity,status,user_id ,product_id) values (2, "active", 3, 3);
+
+
+
+SELECT * from users;
+SELECT * from users where id =1;
+SELECT * from product;
+SELECT * from product where id = 1;
+SELECT * from order;
+SELECT * from order join users on users(id)=order(user_id););;
+SELECT * from order;
+SELECT * from order join users on users(id)=order(user_id););

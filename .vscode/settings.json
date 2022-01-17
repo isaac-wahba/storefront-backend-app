@@ -1,0 +1,24 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "storefront__testing_db",
+      "database": "storefront__testing_db",
+      "username": "postgres",
+      "password": "1111"
+    },
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "storefront_db",
+      "database": "storefront_db",
+      "username": "postgres",
+      "password": "1111"
+    }
+  ]
+}
