@@ -4,6 +4,8 @@ import userRouter from "./handlers/user";
 import productRouter from "./handlers/product";
 import orderRouter from "./handlers/order";
 const app: express.Application = express();
+
+const port = process.env.PORT || 3000;
 const address: string = "0.0.0.0:3000";
 
 app.use(bodyParser.json());
