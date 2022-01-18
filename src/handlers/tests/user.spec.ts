@@ -29,7 +29,7 @@ describe("Test USER endpoints response", () => {
     expect(res.status).toBe(403);
   });
   it("GET /user/:id", async () => {
-    expect(userRouter.get).toBeDefined();
+    expect(userRouter.get("/user/:id")).toBeDefined();
   });
   it("DELETE /user/:id", async () => {
     expect(userRouter.delete).toBeDefined();

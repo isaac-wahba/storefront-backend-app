@@ -13,7 +13,6 @@ const {
 
 let databaseConnection = new Pool();
 
-console.log(ENV);
 if (ENV === "dev") {
   databaseConnection = new Pool({
     host: POSTGRES_HOST,
@@ -22,7 +21,6 @@ if (ENV === "dev") {
     password: POSTGRES_PASSWORD,
   });
 }
-console.log(ENV);
 if (ENV === "test") {
   databaseConnection = new Pool({
     host: POSTGRES_HOST,
@@ -31,5 +29,4 @@ if (ENV === "test") {
     password: POSTGRES_PASSWORD,
   });
 }
-console.log(databaseConnection);
 export default databaseConnection;

@@ -12,7 +12,7 @@ describe("Test PRODUCT endpoints response", () => {
   });
   it("GET /poroduct", async () => {
     const res = await request
-      .get("/user")
+      .get("/product")
       .set("Authorization", `Bearer ${user_token}`);
     expect(res.status).toBe(403);
   });

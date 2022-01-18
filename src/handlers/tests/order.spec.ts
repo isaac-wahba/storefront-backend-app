@@ -8,7 +8,7 @@ const request = supertest(app);
 
 describe("Test PRODUCT endpoints response", () => {
   it("GET /order/:id", async () => {
-    expect(orderRouter.get).toBeDefined();
+    expect(orderRouter.get("/order/:id")).toBeDefined();
   });
   it("GET /order", async () => {
     const res = await request

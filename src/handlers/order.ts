@@ -18,15 +18,19 @@ orderRouter.get(
   }
 );
 
-orderRouter.get("/:id", async (req: express.Request, res: express.Response) => {
-  const requestedOrder = await order.show(req.params.id);
-  try {
-    res.send(requestedOrder);
-  } catch (err) {
-    res.status(400);
-    res.json(err);
+orderRouter.get(
+  "/:id",
+  verifyToken,
+  async (req: express.Request, res: express.Response) => {
+    const requestedOrder = await order.show(req.params.id);
+    try {
+      res.send(requestedOrder);
+    } catch (err) {
+      res.status(400);
+      res.json(err);
+    }
   }
-});
+);
 
 orderRouter.post(
   "/",
