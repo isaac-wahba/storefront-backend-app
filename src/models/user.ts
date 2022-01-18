@@ -1,5 +1,6 @@
 import databaseConnection from "../database";
 import { methods, modelBuilder } from "./parent";
+import { getHash, verfiyHash } from "../helpers/helpers";
 
 const getAllUsers = `SELECT * FROM users;`;
 const getUserById = `SELECT * FROM  users WHERE id=($1) LIMIT 1;`;
@@ -33,7 +34,7 @@ export class User extends modelBuilder {
       const result = await connection.query(insertUser, [
         userT.first_name,
         userT.last_name,
-        userT.password,
+        getHash(userT.password),
       ]);
 
       const data = result.rows[0];
