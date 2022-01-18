@@ -30,32 +30,57 @@ These are the notes from a meeting with the frontend developer that describe wha
 - Current Order by user (args: user id)[token required] : A SHOW route: '/order/:user_id' [GET]
   (NOT IMPLEMENTED)- [OPTIONAL] Completed Orders by user (args: user id)[token required] : A SHOW route: 'completed_orders/:user_id' [GET]
 
-## Data Shapes (Schema)
+## Data Shapes (Schema -all info are included for each single field)
+
+### DATABASE instructions:
+
+- database name: `storefront_db`
+- testing database name: `storefront_testing_db`
+- PORT: `5432
+- creating databases commands:
+  `create database storefront_testing_db;`
+  `create database storefront_db;`
 
 #### Product
 
 ##### product table:
 
-- id
-- name
-- price
-- [OPTIONAL] category
+- id: (serial) primary key
+- name: VARCHAR(100)
+- price: integer
+- category: VARCHAR(100)
+
+#### creating products with data:
+
+1. create the table: `CREATE TABLE IF NOT EXISTS product (id SERIAL PRIMARY KEY ,name VARCHAR(100),price integer ,category VARCHAR(100)); `
+2. insert data: `insert into product(name, price, category) values('ball', 100, 'sports'); `
 
 #### User
 
 ##### users table:
 
-- id
-- firstName
-- lastName
+- id: (serial) primary key
+- firstName: VARCHAR(100)
+- lastName: VARCHAR(100)
 - password
+  : VARCHAR(100)
+
+#### creating users with data:
+
+1. create the table: `CREATE TABLE IF NOT EXISTS users(id SERIAL PRIMARY KEY ,first_name VARCHAR(100),last_name VARCHAR(100), password VARCHAR(100));`
+2. insert data: `insert into users (first_name,last_name,password) values('Isaac', 'Wahba', '1234'); `
 
 #### Orders
 
 ##### orders table:
 
-- id
-- id of each product in the order
-- quantity of each product in the order
-- user_id
-- status of order (active or complete)
+- id: (serial) primary key
+- quantity: integer
+- status: status VARCHAR(100)
+- user_id: FOREIGN KEY REFERENCES users(id)
+- product_id:FOREIGN KEY REFERENCES product(id)
+
+#### creating users with data:
+
+1. create the table: `CREATE TABLE IF NOT EXISTS orders ( id SERIAL PRIMARY KEY, quantity integer , status VARCHAR(100), user_id INTEGER, product_id INTEGER, FOREIGN KEY(user_id) REFERENCES users(id)ON DELETE CASCADE , FOREIGN KEY(product_id) REFERENCES product(id) ON DELETE CASCADE); `
+2. insert data: `insert into orders (quantity,status,user_id ,product_id) values(5, 'active', 1, 1); `
