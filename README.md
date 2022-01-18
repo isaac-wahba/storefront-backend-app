@@ -31,10 +31,10 @@ ENV: `dev or test`
 
 ## Steps to Run the project
 
-0- Server runs on `port=3000`
-1- To setup dependencies: `npm install`
-2- To run the server: `npm start`
-3- To run the tests: `npm test`
+
+- To setup dependencies: `npm install`
+- To run the server: `npm start`
+- To run the tests: `npm test`
 
 ## Technologies Used
 
