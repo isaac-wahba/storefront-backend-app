@@ -29,12 +29,21 @@ describe("Test USER endpoints response", () => {
     expect(res.status).toBe(403);
   });
   it("GET /user/:id", async () => {
-    expect(userRouter.get("/user/:id")).toBeDefined();
+    const res = await request
+      .get("/user/1")
+      .set("Authorization", `Bearer ${user_token}`);
+    expect(res.status).toBe(403);
   });
   it("DELETE /user/:id", async () => {
-    expect(userRouter.delete).toBeDefined();
+    const res = await request
+      .get("/user/1")
+      .set("Authorization", `Bearer ${user_token}`);
+    expect(res.status).toBe(403);
   });
   it("POST /user", async () => {
-    expect(userRouter.post).toBeDefined();
+    const res = await request
+      .get("/user/1")
+      .set("Authorization", `Bearer ${user_token}`);
+    expect(res.status).toBe(403);
   });
 });
