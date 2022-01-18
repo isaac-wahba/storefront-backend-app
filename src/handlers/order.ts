@@ -1,5 +1,5 @@
 import express from "express";
-import { Order, orderType } from "../models/order";
+import { Order, orderProductsType, orderType } from "../models/order";
 import { getHash, verifyToken, verfiyHash } from "../helpers/helpers";
 const orderRouter = express.Router();
 const order = new Order();
@@ -36,15 +36,14 @@ orderRouter.post(
   "/",
   verifyToken,
   async (req: express.Request, res: express.Response) => {
-    const orderToAdd: orderType = {
+    const orderProductToAdd: orderProductsType = {
       quantity: req.body.quantity,
-      status: req.body.status,
-      user_id: req.body.user_id,
+      order_id: req.body.user_id,
       product_id: req.body.product_id,
     };
-    const addedOrder = await order.create(orderToAdd);
+    const addedProductToOrder = await order.addProduct(orderProductToAdd);
     try {
-      res.send(addedOrder);
+      res.send(addedProductToOrder);
     } catch (err) {
       res.status(400);
       res.json(err);

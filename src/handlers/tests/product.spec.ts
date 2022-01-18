@@ -7,19 +7,19 @@ let user_token: string;
 const request = supertest(app);
 
 describe("Test PRODUCT endpoints response", () => {
-  it("GET /poroduct/:id", async () => {
+  it("GET /product/:id", async () => {
     expect(productRouter.get).toBeDefined();
   });
-  it("GET /poroduct", async () => {
+  it("GET /product", async () => {
     const res = await request
       .get("/product")
       .set("Authorization", `Bearer ${user_token}`);
-    expect(res.status).toBe(403);
+    expect(res.status).toBe(200);
   });
-  it("DELETE /poroduct/:id", async () => {
+  it("DELETE /product/:id", async () => {
     expect(productRouter.delete).toBeDefined();
   });
-  it("POST /poroduct", async () => {
+  it("POST /product", async () => {
     expect(productRouter.post).toBeDefined();
   });
 });

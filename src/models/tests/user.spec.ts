@@ -1,3 +1,4 @@
+import { getHash, verfiyHash } from "../../helpers/helpers";
 import { User, userType } from "../user";
 
 const user = new User();
@@ -24,21 +25,13 @@ describe("User Model", () => {
   });
 
   it("create method should add a user", async () => {
-    const result = await user.create({
+    const userExample = {
       first_name: "wael",
       last_name: "ahmed",
       password: "1234",
-    });
-    expect({
-      first_name: result.first_name,
-      last_name: result.last_name,
-      password: result.password,
-    }).toEqual({
-      //    id: 1,
-      first_name: "wael",
-      last_name: "ahmed",
-      password: "1234",
-    });
+    };
+    const result = await user.create(userExample);
+    expect(verfiyHash(result.password, "1234")).toBeTrue();
   });
 
   it("index method should return a list of users", async () => {

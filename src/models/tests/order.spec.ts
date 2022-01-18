@@ -1,4 +1,4 @@
-import { Order, orderType } from "../order";
+import { Order, orderProductsType, orderType } from "../order";
 import { User, userType } from "../user";
 import { Product, productType } from "../product";
 const order = new Order();
@@ -20,6 +20,9 @@ describe("Order Model", () => {
   it("should have a delete method", () => {
     expect(order.index).toBeDefined();
   });
+  it("should have a addProduct method", () => {
+    expect(order.addProduct).toBeDefined();
+  });
 
   it("create method should add a order", async () => {
     // Arrange
@@ -35,10 +38,8 @@ describe("Order Model", () => {
     });
 
     let expectedOrder: orderType = {
-      quantity: 10,
       status: "active",
       user_id: createdUser.id ?? 1,
-      product_id: createdProduct.id ?? 1,
     };
 
     // Action
@@ -47,6 +48,10 @@ describe("Order Model", () => {
     //Assert
     expectedOrder.id = result.id;
     expect(result).toEqual(expectedOrder);
+  });
+  beforeAll(async () => {
+    let all: orderType[] = await product.index();
+    all.forEach(async (o) => await product.delete(o.id?.toString() ?? ""));
   });
   beforeEach(async () => {
     let all: orderType[] = await product.index();
@@ -67,14 +72,18 @@ describe("Order Model", () => {
       password: "1234",
     });
     let expectedOrder = await order.create({
-      quantity: 10,
       status: "active",
       user_id: createdUser.id ?? 1,
-      product_id: createdProduct.id ?? 1,
     });
-    const result: orderType[] = await order.index();
+    // let addedproductToOrder: orderProductsType = {
+    //   quantity: 10,
+    //   order_id: expectedOrder.id ?? 1,
+    //   product_id: createdProduct.id ?? 5,
+    // };
+    // let addedOrder = await order.addProduct(addedproductToOrder);
+    const result = await order.index();
     //expectedOrder.id = expectedOrder.id;
-    expect(result).toEqual([expectedOrder]);
+    expect(result).toContain(expectedOrder);
   });
 
   it("show method should return the correct order", async () => {
@@ -93,10 +102,8 @@ describe("Order Model", () => {
       password: "1234",
     });
     let expectedOrder = await order.create({
-      quantity: 10,
       status: "active",
       user_id: createdUser.id ?? 1,
-      product_id: createdProduct.id ?? 1,
     });
     const result: orderType = await order.show(
       expectedOrder.user_id?.toString() ?? ""

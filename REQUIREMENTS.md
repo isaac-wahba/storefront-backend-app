@@ -75,12 +75,23 @@ These are the notes from a meeting with the frontend developer that describe wha
 ##### orders table:
 
 - id: (serial) primary key
-- quantity: integer
 - status: status VARCHAR(100)
 - user_id: FOREIGN KEY REFERENCES users(id)
+
+#### creating orders with data:
+
+1. create the table: `CREATE TABLE IF NOT EXISTS orders ( id SERIAL PRIMARY KEY, status VARCHAR(100), user_id INTEGER, FOREIGN KEY(user_id) REFERENCES users(id)ON DELETE CASCADE); `
+2. insert data: `INSERT INTO orders (status, user_id) values ($1, $2) returning *;`
+
+#### Orders_Products
+
+##### order_products:
+
+- id: (serial) primary key
+- quantity: integer
 - product_id:FOREIGN KEY REFERENCES product(id)
 
-#### creating users with data:
+#### creating order_products with data:
 
-1. create the table: `CREATE TABLE IF NOT EXISTS orders ( id SERIAL PRIMARY KEY, quantity integer , status VARCHAR(100), user_id INTEGER, product_id INTEGER, FOREIGN KEY(user_id) REFERENCES users(id)ON DELETE CASCADE , FOREIGN KEY(product_id) REFERENCES product(id) ON DELETE CASCADE); `
-2. insert data: `insert into orders (quantity,status,user_id ,product_id) values(5, 'active', 1, 1); `
+1. create the table: `CREATE TABLE IF NOT EXISTS order_products ( id SERIAL PRIMARY KEY, quantity integer , order_id INTEGER, product_id INTEGER, FOREIGN KEY(order_id) REFERENCES orders(id)ON DELETE CASCADE , FOREIGN KEY(product_id) REFERENCES product(id) ON DELETE CASCADE) `
+2. insert data: `INSERT INTO order_products (quantity, order_id,product_id) values ($1, $2, $3, $4) returning *;`

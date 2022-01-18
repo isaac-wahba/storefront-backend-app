@@ -18,6 +18,10 @@ describe("Product Model", () => {
   it("should have a delete method", () => {
     expect(product.index).toBeDefined();
   });
+  beforeAll(async () => {
+    let all: productType[] = await product.index();
+    all.forEach(async (p) => await product.delete(p.id?.toString() ?? ""));
+  });
   beforeEach(async () => {
     let all: productType[] = await product.index();
     all.forEach(async (p) => await product.delete(p.id?.toString() ?? ""));
