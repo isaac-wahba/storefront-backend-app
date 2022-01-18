@@ -6,19 +6,19 @@ This repo contains a backend project with the following details:
 
 ### ENVIRONMENTAL VARIABLES TO INCLUDE:
 
-POSTGRES_HOST: for example --> 127.0.0.1
-POSTGRES_DB: db name
-POSTGRES_USER: db user
-POSTGRES_PASSWORD: db user password
+- POSTGRES_HOST: for example --> 127.0.0.1
+- POSTGRES_DB: db name
+- POSTGRES_USER: db user
+- POSTGRES_PASSWORD: db user password
 
-POSTGRES_TESTING_DB: testing db name
+- POSTGRES_TESTING_DB: testing db name
 
-TOKEN_SECRET: `string`
+- TOKEN_SECRET: `string`
 
-SALT_ROUNDS: `number`
-BCRYPT_PASSWORD: `string`
+- SALT_ROUNDS: `number`
+- BCRYPT_PASSWORD: `string`
 
-ENV: `dev or test`
+- ENV: `dev` or `test`
 
 ### DATABASE instructions:
 
